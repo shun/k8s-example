@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  proxy:
+    image: nginx:stable
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_PATH: /usr/local/lib/node_modules
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+  db:
+    image: mariadb:10
+
+volumes:
+  mysql:
+    driver: "local"
+
