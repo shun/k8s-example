@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  vue:
+    build:
+      context: ./
+
+    volumes:
+      - ./app:/app
+      - ./entrypoint.sh:/entrypoint.sh:ro
+      - ./.bashrc:/home/node/.bashrc
+    environment:
+      LOCALGID: 1000
+      LOCALUID: 1000
+    entrypoint: "/entrypoint.sh"
+    network_mode: "host"
+    command: "vue ui"
+    working_dir: /app
+
