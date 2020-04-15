@@ -23,7 +23,7 @@ export class Facility {
 
   @Column({
     type: "datetime",
-    nullable: false,
+    nullable: true,
     comment: ""
   })
   end_datetime: Date;
