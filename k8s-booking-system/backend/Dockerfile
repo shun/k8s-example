@@ -15,6 +15,7 @@ RUN npm -g install \
         eslint-plugin-prettier \
         express \
         express-graphql \
+        graphql-iso-date \
         graphql@14.4.1 \
         mysql2 \
         nodemon \
