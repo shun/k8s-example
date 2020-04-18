@@ -3,26 +3,12 @@ import {ApolloServer, gql} from "apollo-server-express";
 import {User} from "./entity/User";
 import {createConnection, getRepository, Raw, ConnectionOptions, Repository} from "typeorm";
 import {DBConfig} from "./database/db.config";
+import {Schema} from "./graphql/schema";
 
 const express = require("express");
 const cors = require("cors");
 const app = express();
 app.use(cors());
-
-const schema = gql`
-  type Query {
-    user(id: Int!): User
-  }
-
-
-  type User {
-    id: Int!
-    firstname: String!
-    lastname: String!
-    delflg: Boolean!
-  }
-
-`;
 
 var conn;
 const resolvers = {
@@ -40,7 +26,7 @@ async function bootstrap() {
   createConnection(DBConfig);
 
   const server = new ApolloServer({
-    typeDefs: schema,
+    typeDefs: Schema,
     resolvers,
     playground: true,
   });
