@@ -1,6 +1,9 @@
 FROM node:lts-buster-slim
 
 RUN npm -g install \
+        @graphql-codegen/cli \
+        @graphql-codegen/typescript \
+        @graphql-codegen/typescript-operations \
         @types/express \
         @types/node \
         @typescript-eslint/eslint-plugin \
