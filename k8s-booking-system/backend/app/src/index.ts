@@ -1,6 +1,5 @@
 import "reflect-metadata";
 import {ApolloServer, gql} from "apollo-server-express";
-import {User} from "./entity/User";
 import {createConnection, getRepository, Raw, ConnectionOptions, Repository} from "typeorm";
 import {DBConfig} from "./database/db.config";
 import {Schema} from "./graphql/schema";
@@ -17,7 +16,7 @@ async function bootstrap() {
 
   const server = new ApolloServer({
                         typeDefs: Schema,
-                        Resolvers,
+                        resolvers: Resolvers,
                         playground: true,
                       });
 

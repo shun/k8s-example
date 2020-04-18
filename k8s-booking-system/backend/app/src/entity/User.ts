@@ -48,8 +48,7 @@ export class User {
 
   @OneToMany(
     type => Bookinginfo,
-    bookinginfolist => bookinginfolist.user
+    bookinginfo => bookinginfo.user
   )
-
   bookinginfolist: Bookinginfo[];
 }

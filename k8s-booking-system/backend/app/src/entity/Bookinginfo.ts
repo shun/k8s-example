@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column, OneToOne, JoinColumn} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column, JoinColumn, ManyToOne} from "typeorm";
 import {User} from "./User";
 import {Facility} from "./Facility";
 
@@ -51,17 +51,15 @@ export class Bookinginfo {
   })
   updated_at: Date;
 
-  @OneToOne(
+  @ManyToOne(
     type => User,
     user => user.bookinginfolist
   )
-
   @JoinColumn()
   user: User;
 
-  @OneToOne(
-    type => Facility,
-    facility => facility.bookinginfolist
+  @ManyToOne(
+    type => Facility
   )
 
   @JoinColumn()
