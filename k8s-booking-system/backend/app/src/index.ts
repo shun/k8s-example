@@ -20,6 +20,13 @@ const resolvers = {
       return await userRepository.findOne({ where: {id: id}});
     }
   },
+  Mutation: {
+    addUser: async (_: any, args: any) => {
+      console.log(args)
+      const userRepository = getRepository(User);
+      return await userRepository.save({ firstname: args.firstname, lastname: args.lastname});
+    }
+  }
 };
 
 async function bootstrap() {
