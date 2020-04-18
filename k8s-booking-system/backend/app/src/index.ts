@@ -18,6 +18,9 @@ const resolvers = {
       const id = args.id;
       const userRepository = getRepository(User);
       return await userRepository.findOne({ where: {id: id}});
+    },
+    users: async () => {
+      return await getRepository(User).find();
     }
   },
   Mutation: {
@@ -30,7 +33,7 @@ const resolvers = {
 };
 
 async function bootstrap() {
-  createConnection(DBConfig);
+  conn = createConnection(DBConfig);
 
   const server = new ApolloServer({
     typeDefs: Schema,
